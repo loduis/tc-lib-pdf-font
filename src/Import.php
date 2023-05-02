@@ -120,11 +120,11 @@ class Import extends ImportUtil
         $this->fdt['linked'] = (bool)$linked;
 
         if ($this->fdt['type'] == 'Core') {
-            $processor = new \Com\Tecnick\Pdf\Font\Import\Core($this->font, $this->fdt);
+            $processor = new Import\Core($this->font, $this->fdt);
         } elseif ($this->fdt['type'] == 'Type1') {
-            $processor = new \Com\Tecnick\Pdf\Font\Import\TypeOne($this->font, $this->fdt);
+            $processor = new Import\TypeOne($this->font, $this->fdt);
         } else {
-            $processor = new \Com\Tecnick\Pdf\Font\Import\TrueType($this->font, $this->fdt, $this->fbyte);
+            $processor = new Import\TrueType($this->font, $this->fdt, $this->fbyte);
         }
         $this->fdt = $processor->getFontMetrics();
         $this->saveFontData();
